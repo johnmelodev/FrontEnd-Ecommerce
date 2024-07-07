@@ -1,0 +1,8 @@
+gerenciamento de estado
+componentizacao
+responsividade
+usabilidade
+acessibilidade
+Padroes de codigo 
+Padroes de commit
+testes e2e

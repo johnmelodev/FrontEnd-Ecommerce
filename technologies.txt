@@ -1,0 +1,4 @@
+React, 
+Next JS, 
+Typescript,
+GraphQL,
