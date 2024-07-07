@@ -2,3 +2,8 @@ React,
 Next JS, 
 Typescript,
 GraphQL,
+
+
+SECONDARY
+
+styled-components
