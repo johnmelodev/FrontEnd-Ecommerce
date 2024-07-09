@@ -1,4 +1,5 @@
 Commit convention:
 
 feat: first commit
-feat: creating heade
+feat: creating header
+feat: finished filter
