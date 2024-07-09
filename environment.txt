@@ -61,5 +61,10 @@ const nextConfig = {
 export default nextConfig;
 
 
-API Consumn
+API GraphQL Consumntion
+npm install (inside the folder)
+npm start (inside the folder)
 
+
+Instalar o axios e react-query
+npm install axios react-query

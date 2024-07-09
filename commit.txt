@@ -3,3 +3,4 @@ Commit convention:
 feat: first commit
 feat: creating header
 feat: finished filter
+feat: GraphqlAPI integration
