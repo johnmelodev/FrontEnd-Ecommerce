@@ -5,3 +5,4 @@ feat: creating header
 feat: finished filter
 feat: GraphqlAPI integration
 feat: add filtering and listing products
+refactor: creating icons folders

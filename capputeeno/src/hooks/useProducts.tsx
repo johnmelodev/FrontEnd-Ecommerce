@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { useFilter } from "./useFilter";
 import { PriorityTypes } from "@/types/priority-types";
 import { mountQuery } from "@/app/utils/graphql-filters";
-import { SearchIcon } from '../components/search-icon';
+import { SearchIcon } from '../components/icons/search-icon';
 import { useDeferredValue } from "react";
 import { Product } from '../types/product';
 
