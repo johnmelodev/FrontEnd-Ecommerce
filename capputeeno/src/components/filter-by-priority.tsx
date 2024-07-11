@@ -4,10 +4,6 @@ import { useState } from "react"
 import { useFilter } from "@/hooks/useFilter"
 import { PriorityTypes } from "@/types/priority-types"
 
-interface FilterByPriorityProps {
-
-}
-
 const FilterContainer = styled.div`
     display: flex;
     align-items: center;
@@ -41,6 +37,7 @@ const PriorityFilter = styled.ul`
     border-radius: 4px;
     padding: 12px 16px;
     width: 250px;
+    z-index: 999;
 
     list-style: none;
 
@@ -59,7 +56,7 @@ const PriorityFilter = styled.ul`
     }`
 
 
-export function FilterByPriority(props: FilterByPriorityProps) {
+export function FilterByPriority() {
     const [isOpen, SetIsOpen] = useState(false)
     const { setPriority } = useFilter()
 
