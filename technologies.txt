@@ -7,3 +7,6 @@ GraphQL,
 SECONDARY
 
 styled-components
+
+local storage
+axios

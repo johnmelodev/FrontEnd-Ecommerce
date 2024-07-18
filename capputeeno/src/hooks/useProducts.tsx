@@ -23,10 +23,10 @@ const getFieldByPriority = (priority: PriorityTypes): { field: string, order: st
 export function useProducts() {
     const { type, priority, search } = useFilter();
     const searchDeferred = useDeferredValue(search)
-    const page = 1; // Defina a página ou passe como argumento se necessário
+    const page = 1;
     const query = mountQuery(type, priority, page);    
-    const { data } = useQuery(['products', type, priority], () => fetcher(query));
 
+    const { data } = useQuery(['products', type, priority], () => fetcher(query));
     const products = data?.data?.data?.allProducts;
     const filteredProducts = products?.filter(product => product.name.toLowerCase().includes(searchDeferred.toLowerCase()))
 
