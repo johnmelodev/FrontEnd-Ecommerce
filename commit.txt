@@ -6,3 +6,5 @@ feat: finished filter
 feat: GraphqlAPI integration
 feat: add filtering and listing products
 refactor: creating icons folders
+refactor: extract providers
+fix: fixing filter responsivity
