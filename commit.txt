@@ -8,3 +8,4 @@ feat: add filtering and listing products
 refactor: creating icons folders
 refactor: extract providers
 fix: fixing filter responsivity
+feat: pre fixing the api integration
