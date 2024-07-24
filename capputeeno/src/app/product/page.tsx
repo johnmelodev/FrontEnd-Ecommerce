@@ -21,7 +21,7 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
     gap: 32px;
-    margin-top: ;
+    margin-top: 24px;
     img {
       max-width: 640px;
       width: 50%;
@@ -109,13 +109,11 @@ const ProductInfo = styled.div`
           font-weight: 500;
           font-size: 16px;
         }
-
         p {
           font-size: 14px;
         }
       }
     }
-  }
 `;
 export default function ProductPage({
   searchParams,
@@ -136,10 +134,10 @@ export default function ProductPage({
             <ProductInfo>
               <span>{data?.category}</span>
               <h2>{data?.name}</h2>
-              <span>{`Dolar: ${(data?.price_in_cents ?? 0) / 100}`}</span>
-              <p>*Frete grátis para compras acima de $90.00.</p>
+              <span>{`$ ${(data?.price_in_cents ?? 0) / 100}`}</span>
+              <p>*Free shipping for purchases over $90.00.</p>
               <div>
-                <h3>Descrição</h3>
+                <h3>Description</h3>
                 <p>{data?.description}</p>
               </div>
             </ProductInfo>
