@@ -2,11 +2,13 @@
 
 import { DefaultPageLayout } from "@/components/default-page-layout";
 import { BackIcon } from "@/components/icons/back-icon";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { BackBtn as ImportedBackBtn } from "../../components/back-button";
 import { useProduct } from "@/hooks/useProduct";
 import { Product } from "../../types/product";
 import { ShopBagIcon } from "@/components/icons/shopping-bag-icon";
+import { Session } from "inspector";
+import { handleClientScriptLoad } from "next/script";
 
 interface ProductProps {}
 
@@ -32,7 +34,7 @@ const Container = styled.div`
       flex-direction: column;
 
       button {
-        background: #115D8C;
+        background: #115d8c;
         mix-blend-mode: multiply;
         border-radius: 4px;
         color: white;
@@ -48,10 +50,8 @@ const Container = styled.div`
         justify-content: center;
         gap: 8px;
       }
-
     }
-
-
+  }
 `;
 
 const BackBtn = styled(ImportedBackBtn)`
@@ -67,54 +67,53 @@ const BackBtn = styled(ImportedBackBtn)`
 `;
 
 const ProductInfo = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      flex-direction: column;
+  span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text-dark-2);
+  }
 
-      span {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 150%;
-        color: var(--text-dark-2);
-      }
+  h2 {
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 150%;
+    color: var(--text-dark);
+    margin-top: 12px;
+  }
 
-      h2 {
-        font-weight: 300;
-        font-size: 32px;
-        line-height: 150%;
-        color: var(--text-dark);
-        margin-top: 12px;
-      }
+  span:nth-of-type(2) {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--shapes-dark);
+    margin-bottom: 24px;
+  }
 
-      span:nth-of-type(2) {
-        font-weight: 600;
-        font-size: 20px;
-        color: var(--shapes-dark);
-        margin-bottom: 24px;
-      }
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--text-dark);
+  }
 
-      p {
-        font-weight: 400;
-        font-size: 12px;
-        color: var(--text-dark);
-      }
-
-      div {
-        margin-top: 24px;
-        h3 {
-          text-transform: uppercase;
-          color: var(--text-dark);
-          font-weight: 500;
-          font-size: 16px;
-        }
-        p {
-          font-size: 14px;
-        }
-      }
+  div {
+    margin-top: 24px;
+    h3 {
+      text-transform: uppercase;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 16px;
     }
+    p {
+      font-size: 14px;
+    }
+  }
 `;
+
 export default function ProductPage({
   searchParams,
 }: {
@@ -122,14 +121,35 @@ export default function ProductPage({
 }) {
   const { data } = useProduct(searchParams.id);
 
-  console.log(data);
+  const handleAddToCart = () => {
+    let cartItems = localStorage.getItem("cart-items");
+
+    if (cartItems) {
+      let cartItemsArray = JSON.parse(cartItems);
+
+      let existingProductIndex = cartItemsArray.findIndex(
+        (item: { id: string }) => item.id === searchParams.id
+      );
+
+      if (existingProductIndex !== -1) {
+        cartItemsArray[existingProductIndex].quantity += 1;
+      } else {
+        cartItemsArray.push({ ...data, quantity: 1, id: searchParams.id });
+      }
+
+      localStorage.setItem("cart-items", JSON.stringify(cartItemsArray));
+    } else {
+      const newCart = [{ ...data, quantity: 1, id: searchParams.id }];
+      localStorage.setItem("cart-items", JSON.stringify(newCart));
+    }
+  };
 
   return (
     <DefaultPageLayout>
       <Container>
         <BackBtn navigate="/" />
         <section>
-          <img src={data?.image_url} />
+          <img src={data?.image_url} alt="Product" />
           <div>
             <ProductInfo>
               <span>{data?.category}</span>
@@ -141,7 +161,7 @@ export default function ProductPage({
                 <p>{data?.description}</p>
               </div>
             </ProductInfo>
-            <button>
+            <button onClick={handleAddToCart}>
               <ShopBagIcon />
               Add to cart
             </button>

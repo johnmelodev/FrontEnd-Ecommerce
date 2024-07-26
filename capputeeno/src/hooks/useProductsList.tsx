@@ -31,7 +31,14 @@ export function useProductsList() {
   const page = 1;
   const query = mountQuery(type, priority, page);
 
-  const { data } = useQuery(["products", type, priority], () => fetcher(query));
+  const { data } = useQuery(
+    ["products", type, priority],
+    () => fetcher(query),
+    {
+      staleTime: 1000 * 60 * 1,
+    }
+  );
+
   const products = data?.data?.data?.allProducts;
   const filteredProducts = products?.filter((product) =>
     product.name.toLowerCase().includes(searchDeferred.toLowerCase())
