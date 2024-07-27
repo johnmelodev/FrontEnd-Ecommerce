@@ -12,3 +12,10 @@ feat: pre fixing the api integration
 feat: add navigation to product page
 feat:add btn add to cart control
 fix: add cache time to requests
+feat: add new colors
+refactor: extract divider component
+feat: add interface for product cart
+feat: add navigation to home
+feat: add navigation to cartpage
+feat: add cartpage
+

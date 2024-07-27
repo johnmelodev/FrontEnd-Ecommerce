@@ -1,7 +1,6 @@
 "use client";
 
 import { DefaultPageLayout } from "@/components/default-page-layout";
-import { BackIcon } from "@/components/icons/back-icon";
 import styled from "styled-components";
 import { BackBtn as ImportedBackBtn } from "../../components/back-button";
 import { useProduct } from "@/hooks/useProduct";
