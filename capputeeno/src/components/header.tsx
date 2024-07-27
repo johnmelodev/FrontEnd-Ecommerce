@@ -32,11 +32,13 @@ const TagHeader = styled.header`
   }
 `;
 
-const Logo = styled.span`
+const Logo = styled.a`
   color: var(--logo-color);
   font-weight: 400;
   font-size: 24px;
   line-height: 150%;
+  text-decoration: none;
+  cursor: pointer;
 
   @media (min-width: ${(props) => props.theme.tabletBreakpoint}) {
     font-size: 24px;
@@ -51,9 +53,10 @@ export function Header(props: HeaderProps) {
   const { setSearch, search } = useFilter();
   return (
     <TagHeader>
-      <Link href="/">
-        <Logo className={sairaStencil.className}>Capputeeno</Logo>
-      </Link>
+      <Logo className={sairaStencil.className} href="/">
+        Capputeeno
+      </Logo>
+
       <div>
         <PrimaryInputWSearchIcon
           value={search}
