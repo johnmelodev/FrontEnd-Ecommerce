@@ -1,6 +1,6 @@
 - npx create-next-app@latest
 
-✔ What is your project named? … capputeeno
+✔ What is your project named? … FrontMarket
 ✔ Would you like to use TypeScript? … No / Yes
 ✔ Would you like to use ESLint? … No / Yes
 ✔ Would you like to use Tailwind CSS? … No / Yes
